@@ -1,3 +1,9 @@
+(function() {
+    // Only run if this is the taskboards app
+    if (!window.VESPA_APPS || !window.VESPA_APPS.taskboards) {
+        console.log("Taskboards app not configured for this view");
+        return;
+    }
 // VESPA TaskBoard - Knack Integration Script - v1.0
 // This script must be added to Knack builder to enable communication between Knack and the embedded React app
 (function() {
@@ -8,15 +14,15 @@
   }
 
   // --- Constants and Configuration ---
-  const knackAppId = window.VESPATASKBOARD_CONFIG.knackAppId;
-  const knackApiKey = window.VESPATASKBOARD_CONFIG.knackApiKey;
-  const KNACK_API_URL = 'https://api.knack.com/v1';
-  const TASKBOARD_APP_CONFIG = window.VESPATASKBOARD_CONFIG.appConfig || {
+ const knackAppId = window.VESPA_APPS.taskboards.knackAppId;
+const knackApiKey = window.VESPA_APPS.taskboards.knackApiKey;
+const KNACK_API_URL = 'https://api.knack.com/v1';
+const TASKBOARD_APP_CONFIG = window.VESPA_APPS.taskboards.appConfig || {
     'scene_1188': {
       'view_3009': {
         appType: 'taskboard',
         elementSelector: '.kn-rich-text',
-        appUrl: window.VESPATASKBOARD_CONFIG.appUrl || 'https://4sighteducation.github.io/VESPATASKBOARD/'
+        appUrl: window.VESPA_APPS.taskboards.appUrl || 'https://4sighteducation.github.io/VESPATASKBOARD/'
       }
     }
   };
